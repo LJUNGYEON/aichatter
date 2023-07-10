@@ -123,7 +123,7 @@ handleSubmit = (e) => {
 
           <input
             placeholder="전화번호"
-            value={this.state.phone}
+            defaultValue={this.state.phone}
             onChange={this.handleChange}
             name="phone"
           />
@@ -133,9 +133,7 @@ handleSubmit = (e) => {
              <button type="submit">등록</button>
         </form>
         </div>
-
-
-      </div>
+     </div>
 
     );
   }

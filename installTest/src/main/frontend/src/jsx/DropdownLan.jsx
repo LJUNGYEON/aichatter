@@ -55,7 +55,6 @@ const Wrapper = styled.div`
   font-size: 19px;
   background: #13b6bc;
   width: 50px;
-  height: 70px;
   font-weight: bold;
 `;
 

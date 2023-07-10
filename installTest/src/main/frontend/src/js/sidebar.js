@@ -8,7 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 
-function SideBar() {
+export function SideBar() {
 
    const [hello, setHello] = useState('')
 
@@ -24,18 +24,23 @@ function SideBar() {
     }, []);
 
     return (
+
       <div className="layout-sidebar">
         <div className="layout-sidebar-backdrop"></div>
         <div className="layout-sidebar-body">
           <div className="custom-scrollbar">
             <nav id="sidenav" className="sidenav-collapse">
               <ul id="sidemenu" className="sidenav level-1">
-      			<li className="sidenav-heading home" style={{paddingBottom:"0px"}}>
-      				<a href="/api/hello" style={{paddingRight:"20px",paddingLeft: "35px"}}>
-      					<FontAwesomeIcon icon="fa-solid fa-house" />
-      					<span className="sidenav-label">Home</span>
-      				</a>
-      			</li>
+      			<li className="sidenav-search">
+                    <form className="sidenav-form" >
+                      <div className="form-group form-group-sm">
+                        <div className="input-with-icon">
+                          <input id="sidemenu_search" className="form-control" type="text" placeholder="Search..."/>
+                          <span className="icon icon-search input-icon"></span>
+                        </div>
+                      </div>
+                    </form>
+                  </li>
       	  		<li className="sidenav-item " style={{padding: "0px 0px 0px 5px",borderBottom: "solid 1px #e7e7e7"}}>
       				<a href="#" aria-haspopup="true" style={{paddingLeft:"30px", fontWeight: "bold"}}>
       					<FontAwesomeIcon icon="fa-solid fa-chevron-down" />
