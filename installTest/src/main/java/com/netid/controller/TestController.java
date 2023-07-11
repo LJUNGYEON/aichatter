@@ -9,6 +9,7 @@ public class TestController {
     public void test1() {
 
     }
+
     @GetMapping("/api/hello")
     public String test() {
         return "Hello, world!";

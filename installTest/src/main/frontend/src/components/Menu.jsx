@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState , useRef } from 'react';
 import data from '../test/data'
+import '../css/side.css';
 import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -65,15 +66,15 @@ const Menu = ({ isActive }) => {
 };
 function ChatList(props){
     return(
-        <li>
-            <div>
-           <FontAwesomeIcon icon="fa-regular fa-message" />
+        <li className="chatList">
+            <div className="chatList-main">
+             <FontAwesomeIcon icon="fa-regular fa-message" style={{float:"left"}} />
 
              {
                 props.updateFlag[props.index] === true?
-                    <div>
-                        <input type="text" id={"cTitle"+props.chatList[props.index].id} defaultValue={props.chatList[props.index].title} />
-                            <button onClick={()=>{
+                    <>
+                        <input className="chat-title-input" type="text" id={"cTitle"+props.chatList[props.index].id} defaultValue={props.chatList[props.index].title} />
+                            <p className="chat-lsit-btn" onClick={()=>{
                             let updateFlagTmp = [...props.updateFlag];
                             updateFlagTmp[props.index] = false;
                             props.setUpdateFlag(updateFlagTmp);
@@ -83,21 +84,21 @@ function ChatList(props){
                             chatListTmp[props.index].title = document.getElementById("cTitle"+props.chatList[props.index].id).value;
                             props.setChatList(chatListTmp);
 
-                         }} >확인</button>
-                    </div>
+                         }} ><FontAwesomeIcon icon="fa-solid fa-check" /></p>
+                    </>
                  :
-                 <div>
-                    <p>{props.chatList[props.index].title}</p>
-                      <button onClick={()=>{
+                 <>
+                    <p  className="chat-title">{props.chatList[props.index].title}</p>
+                      <p className="chat-lsit-btn" onClick={()=>{
                         let updateFlagTmp = [...props.updateFlag];
                         updateFlagTmp[props.index] = true;
                         props.setUpdateFlag(updateFlagTmp);
 
-                      }} >수정</button>
-                 </div>
+                      }} ><FontAwesomeIcon icon="fa-solid fa-pen" /></p>
+                 </>
 
              }
-             <button onClick={()=>{
+             <p className="chat-lsit-btn" onClick={()=>{
                     let updateFlagTmpDelete = [...props.updateFlag];
                     updateFlagTmpDelete.splice(props.index, 1);
                     props.setUpdateFlag(updateFlagTmpDelete);
@@ -105,7 +106,7 @@ function ChatList(props){
                     let chatListTmpDelete = [...props.chatList];
                     chatListTmpDelete.splice(props.index, 1);
                     props.setChatList(chatListTmpDelete);
-             }}>삭제</button>
+             }}><FontAwesomeIcon icon="fa-solid fa-trash-can" /></p>
             </div>
         </li>
     )
