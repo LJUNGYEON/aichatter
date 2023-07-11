@@ -93,19 +93,14 @@ const Outside = styled.div`
 function Header() {
    const [hello, setHello] = useState('')
    const [view, setView] = useState(false);
-   const [isActive, setActive] = useState(false);
+   const [isActive, setActive] = useState(true);
 
      const handleClick = () => {
        console.log("active!");
        setActive(!isActive);
      };
 
-    useEffect(() => {
-        axios.get('/api/hello')
-        .then(response => setHello(response.data))
-        .catch(error => console.log(error))
 
-    }, []);
     return (
         <>
         <div className="header_nav">
@@ -133,13 +128,13 @@ function Header() {
                     </li>
                 </ul>
             </div>
-            <div className="nav " style={{display:"inline-block",float:"right"}}>
+            <div className="nav navbar-right " >
                 <ul className="navbar-nav" >
                     <li>
                          <FontAwesomeIcon icon="fa-regular fa-bell" size="xl" />
                     </li>
                     <li>
-                        <FontAwesomeIcon icon="fa-regular fa-circle-user" size="xl" style={{color: "gray",}} /><span>이름</span>
+                        <FontAwesomeIcon icon="fa-regular fa-circle-user" size="xl" style={{color: "gray"}} /><span>이름</span>
                     </li>
                     <li><DropdownLan /></li>
                     <li ><DropdownMenu /></li>
@@ -155,45 +150,6 @@ function Header() {
             </Outside>
          </div>
         </>
-
-
-//      <div className="layout-header" >
-//          	<div className="navbar navbar-default">
-//          		<div className="navbar-header">
-//          			<a className="navbar-brand navbar-brand-center" href="#">
-//                        <img className="navbar-brand-logo" src={logo} alt="mcloudoc"/>
-//                    </a>
-//          		</div>
-//          		<ul className="nav navbar-nav navbar-left">
-//                   <li className="">
-//                       <a href="#1">채팅</a>
-//                   </li>
-//                   <li className="">
-//                      <a href="#2">번역</a>
-//                   </li>
-//                    <li className="">
-//                      <a href="#3">문서봇</a>
-//                    </li>
-//                    <li className="">
-//                      <a href="#4">자동화봇</a>
-//                    </li>
-//                </ul>
-//          		<ul className="nav navbar-nav navbar-right" style={{marginRight: "0px"}}>
-//          		    <li className="">
-//                       <div>
-//                          <h4 className="navbar-text text-center"><FontAwesomeIcon icon="fa-regular fa-bell" size="xl" /></h4>
-//                       </div>
-//                    </li>
-//                    <li className="">
-//                        <div>
-//                           <h4 className="navbar-text text-center"><FontAwesomeIcon icon="fa-regular fa-circle-user" size="xl" style={{color: "gray",}} /><span style={{ paddingLeft: "5px"}}>이름</span></h4>
-//                        </div>
-//                    </li>
-//                    <li><DropdownLan /></li>
-//                    <li ><DropdownMenu /></li>
-//                </ul>
-//          	</div>
-//          </div>
     );
 }
 
