@@ -106,7 +106,7 @@ function Header() {
         <div className="header_nav">
             <div className="navbar-header">
                 <a className="navbar-brand navbar-brand-center" href="#">
-                    <img className="navbar-brand-logo" src={logo} alt="mcloudoc"/>
+                    <img className="navbar-brand-logo" src={logo} alt="mcloudoc" />
                </a>
             </div>
              <Close onClick={handleClick}>
