@@ -1,10 +1,13 @@
 import styled from "styled-components";
-// import { FaBeer } from 'react-icons/fa';
+import { useState } from 'react';
+import data from '../test/data'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fas ,far)
+
 
 const Ul = styled.ul`
   list-style: none;
@@ -29,6 +32,13 @@ const Ul = styled.ul`
 
 `;
 const Menu = ({ isActive }) => {
+   let [chatList,setChatList]=useState(data);
+   let [updateFlag, setUpdateFlag]= useState([
+    chatList.map((a,i)=>{
+        return(false);
+    })
+   ]);
+   console.log(updateFlag);
   return (
     <>
       <Ul className={isActive ? "in" : null}>
@@ -37,18 +47,37 @@ const Menu = ({ isActive }) => {
                <input name="chkAll" className="custom-control-input" type="checkbox" value="chkAll" />
                <span className="custom-control-indicator"></span>
                <span className="custom-control-label">
-                    채팅 목록
+                    채팅 목록 <FontAwesomeIcon icon="fas fa-plus-large" />
                </span>
-               <FontAwesomeIcon icon="fa-solid fa-plus-large" />
             </label>
         </li>
-        <li>
-            <div>
-            <FontAwesomeIcon icon="fa-regular fa-message-dots" /> Shop
-            </div>
-        </li>
+        {
+            chatList.map(function(a,i){
+                return (
+                    <ChatList chatList={chatList} index={i} updateFlag={updateFlag} setUpdateFlag={setUpdateFlag}/>
+                )
+            })
+        }
+
       </Ul>
     </>
   );
 };
+function ChatList(props){
+    return(
+        <li>
+            <div>
+            <FontAwesomeIcon icon="far fa-message-dots" />
+            <p>{props.chatList[props.index].title}</p>
+                <input type="hidden" value={props.chatList[props.index].title} />
+             <button onClick={()=>{
+               let updateFlagTmp = [...props.updateFlag];
+               updateFlagTmp[props.index] = true;
+               props.setUpdateFlag(updateFlagTmp);
+             }} >수정</button>
+             <button>삭제</button>
+            </div>
+        </li>
+    )
+}
 export default Menu;

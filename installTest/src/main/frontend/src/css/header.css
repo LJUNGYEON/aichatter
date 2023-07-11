@@ -27,7 +27,7 @@ ul.navbar-nav a:hover {
    background-color:#e7e7e7
 }
 .header_nav > .nav {
-	width:500px;
+	width:600px;
 	height:100%;
 }
 
@@ -50,11 +50,15 @@ ul.navbar-nav a:hover {
 	}
 
 	.navbar-right {
-		float: right !important;
-		margin-right: -15px;
+	    width: 415px !important;
+		margin-left: auto;
 	}
 
 }
+
+.navbar-right > ul> li {
+    margin: 0 15px !important;
+  }
 .navbar-text {
 	margin-top: 20px;
 	margin-bottom: 20px;
